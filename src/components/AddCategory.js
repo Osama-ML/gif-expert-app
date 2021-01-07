@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const AddCategory = () => {
+export const AddCategory = ({setCategories}) => {
 
     const [InputValue, setInputValue] = useState('Hola mundo');
 
@@ -10,7 +10,7 @@ export const AddCategory = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Submit hecho')
+        setCategories(categ => [...categ, InputValue]);
     }
 
     return (
