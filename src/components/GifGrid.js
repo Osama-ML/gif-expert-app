@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { key } from '../key';
 
 
 export const GifGrid = ({category}) => {
+
+    const [counter, setCounter] = useState(0)
+
+    useEffect(() => {
+        getGifs();
+    }, []) // se ejecueta cuando el componente es renderifazo por primera vez
 
     const getGifs = async () => {
 
@@ -20,13 +26,16 @@ export const GifGrid = ({category}) => {
         console.log(gifs);
     }
 
-    getGifs();
-
     return (
         <>
             <h3>
                 {category}
             </h3>
+            <h2>{counter}</h2>
+            <button 
+            onClick= {() => {
+                setCounter(counter+1)
+            }}>+1</button>
         </>
     )
 }
