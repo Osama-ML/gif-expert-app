@@ -4,7 +4,7 @@ import { key } from '../key';
 
 export const GifGrid = ({category}) => {
 
-    const [counter, setCounter] = useState(0)
+    const [images, setImages] = useState([])
 
     useEffect(() => {
         getGifs();
@@ -12,7 +12,7 @@ export const GifGrid = ({category}) => {
 
     const getGifs = async () => {
 
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=pog&limit=10`;
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=lol&limit=10`;
         const resp = await fetch(url);
         const {data} = await resp.json();
 
@@ -24,6 +24,7 @@ export const GifGrid = ({category}) => {
             }
         })
         console.log(gifs);
+        setImages(gifs)
     }
 
     return (
@@ -31,11 +32,17 @@ export const GifGrid = ({category}) => {
             <h3>
                 {category}
             </h3>
-            <h2>{counter}</h2>
-            <button 
-            onClick= {() => {
-                setCounter(counter+1)
-            }}>+1</button>
+            <ol>
+                {
+                    images.map(({id, title}) => {
+                        return(
+                            <li key={id}>
+                                {title}
+                            </li>
+                        )
+                    })
+                }
+            </ol>
         </>
     )
 }
