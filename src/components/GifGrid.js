@@ -13,7 +13,7 @@ export const GifGrid = ({category}) => {
 
     const getGifs = async () => {
 
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=lol&limit=10`;
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=fire&limit=10`;
         const resp = await fetch(url);
         const {data} = await resp.json();
 
@@ -33,13 +33,15 @@ export const GifGrid = ({category}) => {
             <h3>
                 {category}
             </h3>
-            {
-                images.map((img) => {
-                    return(<GifGridItem key= {img.id} 
-                        { ...img } /> // se puede enviar datos de esta maanera tmb
-                    )
-                    })
-            }
+            <div className="card-grid">
+                {
+                    images.map((img) => {
+                        return(<GifGridItem key= {img.id} 
+                            { ...img } /> // se puede enviar datos de esta maanera tmb
+                        )
+                        })
+                }
+            </div>
         </>
     )
 }

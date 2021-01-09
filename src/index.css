@@ -5,8 +5,33 @@
 body{
     padding: 1.5rem;
 }
+
 input{
     color: darkgray;
     width: 100%;
     font-size: 1rem;
+}
+
+.card-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    align-content: center;
+    border: 2px solid grey;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.card p {
+    padding: 5px;
+    text-align: center;
+}
+
+.card img {
+    max-height: 170px;
 }
