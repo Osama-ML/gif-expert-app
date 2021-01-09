@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { key } from '../key';
+import React, { useEffect, useState } from 'react';
+import { getGifs } from '../helpers/getGifs';
 import { GifGridItem } from './GifGridItem';
 
 
@@ -8,25 +8,12 @@ export const GifGrid = ({category}) => {
     const [images, setImages] = useState([])
 
     useEffect(() => {
-        getGifs();
-    }, []) // se ejecueta cuando el componente es renderifazo por primera vez
+        getGifs(category)
+            .then(gifs => setImages(gifs))
+    }, [category]) // se ejecueta cuando el componente es renderifazo por primera vez
+    // si la dependencia category cambia, se vuelve a ejecutar el useEffect
 
-    const getGifs = async () => {
 
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=fire&limit=10`;
-        const resp = await fetch(url);
-        const {data} = await resp.json();
-
-        const gifs = data.map((img) => {
-            return {
-                id: img.id,
-                title: img.title,
-                url: img.images.downsized_medium.url
-            }
-        })
-        console.log(gifs);
-        setImages(gifs)
-    }
 
     return (
         <>

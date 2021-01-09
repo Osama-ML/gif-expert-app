@@ -12,7 +12,7 @@ export const AddCategory = ({setCategories}) => {
     const handleSubmit = (e) => {
         e.preventDefault(); // elimina la accion de accion por defecto de un input
         if (InputValue.trim().length > 2){
-            setCategories(categ => [...categ, InputValue]);
+            setCategories(categ => [InputValue, ...categ]);
             setInputValue('');
         }
     }
