@@ -22,7 +22,7 @@ export const useFetchGifs = (category) => {
 
             })
 
-    }, []) // se ejecueta cuando el componente es renderifazo por primera vez
+    }, [category]) // se ejecueta cuando el componente es renderifazo por primera vez
     // si la dependencia category cambia, se vuelve a ejecutar el useEffect
 
     return state;

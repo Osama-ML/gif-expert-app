@@ -30,6 +30,7 @@ input{
 .card p {
     padding: 5px;
     text-align: center;
+    font-size: small;
 }
 
 .card img {
