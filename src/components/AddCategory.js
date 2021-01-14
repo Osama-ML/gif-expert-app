@@ -6,12 +6,14 @@ export const AddCategory = ({setCategories}) => {
     const [InputValue, setInputValue] = useState('');
 
     const handleInputChange = (e) => {
-        setInputValue(e.target.value)
-        console.log('handleinputchange ejecutado')
+        setInputValue(e.target.value);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault(); // elimina la accion de accion por defecto de un input
+        
+        console.log('handleSubmit', InputValue)
+        
         if (InputValue.trim().length > 2){
             setCategories(categ => [InputValue, ...categ]);
             setInputValue('');
