@@ -57,7 +57,8 @@ describe('Pruebas en <AddCategory/>', () => {
         wrapper.find('form').simulate('submit', { preventDefault(){} })
 
         // setCategories se debe haber llamado
-        expect(setCategories).toHaveBeenCalled();
+        expect(setCategories).toHaveBeenCalledTimes(1);
+        expect(setCategories).toHaveBeenCalledWith(expect.any(Function)); //evaluamos que setCategories sea llamado con una funcion o callback
 
         // el calor del input debe de estar ''
         expect(wrapper.find('input').prop('value')).toBe('');
