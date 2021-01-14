@@ -46,5 +46,23 @@ describe('Pruebas en <AddCategory/>', () => {
 
     })
     
+    test('debe de llamar el setCategories y limpiar la caja de texto', () => {
+        
+        const value = 'Hola test'
+        
+        // simular inputChnage
+        wrapper.find('input').simulate('change', { target: {value:value} });
+
+        // simular submit
+        wrapper.find('form').simulate('submit', { preventDefault(){} })
+
+        // setCategories se debe haber llamado
+        expect(setCategories).toHaveBeenCalled();
+
+        // el calor del input debe de estar ''
+        expect(wrapper.find('input').prop('value')).toBe('');
+
+    })
+    
 
 })
